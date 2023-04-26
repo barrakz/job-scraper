@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oferty pracy</title>
+  </head>
+  <body>
+    <h1>Oferty pracy</h1>
+    <ul>
+      {% for job in job_titles %}
+        <li>{{ job.offer_title }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
