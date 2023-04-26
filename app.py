@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from main2 import get_job_titles
+from main import get_job_titles
 
 app = Flask(__name__)
 
