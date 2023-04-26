@@ -41,14 +41,14 @@ def get_job_titles():
 
     # saving the names of offers in json file
     titles = driver.find_elements(By.XPATH, '//h3[@data-test="offer-title"]')
-    job_titles = []
+    companies = driver.find_elements(By.XPATH, '//span[@data-test="company-name"]')
+    offers = []
 
+    for title, company in zip(titles, companies):
+        offer = {'offer_title': title.text, 'company_name': company.text}
+        offers.append(offer)
 
-    for title in titles:
-        job_title = {'offer_title': title.text}
-        job_titles.append(job_title)
-
-    data = {'offers': job_titles}
+    data = {'offers': offers}
 
     with open('job_titles.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
@@ -56,7 +56,7 @@ def get_job_titles():
     # close chrome browser
     driver.quit()
 
-    return job_titles
+    return offers
 
 
 

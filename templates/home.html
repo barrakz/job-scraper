@@ -7,7 +7,10 @@
     <h1>Oferty pracy #python #junior #zdalnie z serwisu it.pracuj.pl</h1>
     <ul>
       {% for job in job_titles %}
-        <li>{{ job.offer_title }}</li>
+        <li>
+            <b>{{ job.offer_title }}</b>
+            <p>{{ job.company_name }}</p>
+        </li>
       {% endfor %}
     </ul>
   </body>
