@@ -5,10 +5,22 @@
   </head>
   <body>
     <h1>Oferty pracy #python #junior #zdalnie z serwisu it.pracuj.pl</h1>
-    <ul>
+    <table>
+      <tr>
+        <th>Tytuł oferty</th>
+        <th>Nazwa firmy</th>
+        <th>Link do oferty</th>
+        <th>Data publikacji</th>
+      </tr>
       {% for job in job_titles %}
-        <li>{{ job.offer_title }}</li>
+        <tr>
+          <td>{{ job.offer_title }}</td>
+          <td>{{ job.company_name }}</td>
+          <td><a href="{{ job.link }}" target="_blank">{{ job.link }}</a></td>
+          <td>{{ job.date }}</td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
   </body>
 </html>
+
