@@ -39,13 +39,16 @@ def get_job_titles():
     junior_filter.click()
     time.sleep(1)
 
-    # saving the names of offers in json file
+    # saving the data of offers in json file
     titles = driver.find_elements(By.XPATH, '//h3[@data-test="offer-title"]')
     companies = driver.find_elements(By.XPATH, '//span[@data-test="company-name"]')
+    links = driver.find_elements(By.XPATH, '//a[@data-test="offer-link"]')
+    dates = driver.find_elements(By.CSS_SELECTOR, '.JobOfferstyles__FooterText-sc-1rq6ue2-22')
     offers = []
+    
 
-    for title, company in zip(titles, companies):
-        offer = {'offer_title': title.text, 'company_name': company.text}
+    for title, company, link, date in zip(titles, companies, links, dates):
+        offer = {'offer_title': title.text, 'company_name': company.text, 'link': link.get_attribute('href'), 'date': date.text}
         offers.append(offer)
 
     data = {'offers': offers}
@@ -54,7 +57,7 @@ def get_job_titles():
         json.dump(data, f, ensure_ascii=False)
 
     # close chrome browser
-    driver.quit()
+    # driver.quit()
 
     return offers
 
