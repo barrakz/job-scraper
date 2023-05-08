@@ -19,24 +19,24 @@ def accept_cookies(driver):
     cookie_button = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable((By.XPATH, "//button[contains(., 'Akceptuj wszystkie')]")))
     cookie_button.click()
-    time.sleep(1)
+    time.sleep(2)
 
 def filter_jobs(driver):
     # Filtering by programming language
     python_filter = driver.find_element(By.XPATH, '//label[@data-test="radio-mostPopular-Python-label"]')
     python_filter.click()
-    time.sleep(1)
+    time.sleep(2)
 
     # Filtering by remote work
     remote_filter = driver.find_element(By.XPATH, '//label[@data-test="checkbox-locationsAndRemoteWork-rw-label"]')
     remote_filter.click()
-    time.sleep(1)
+    time.sleep(2)
 
     # Filtering by offers for junior
     junior_filter = driver.find_element(By.XPATH,
-                                         '//*[@id="root"]/div[2]/div[1]/div[1]/div/div[2]/form/div[5]/div[2]/ul/li[3]/label')
+                                         '//*[@id="root"]/div[4]/div[1]/div[1]/div/div[2]/form/div[5]/div[2]/ul/li[3]/label')
     junior_filter.click()
-    time.sleep(1)
+    time.sleep(2)
 
 def get_job_elements(driver):
     # Find job offer elements
